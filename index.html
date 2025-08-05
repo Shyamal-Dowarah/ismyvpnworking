@@ -3,9 +3,7 @@
 <head>
   <!-- Google Analytics/Tag Manager Placeholder -->
 <!-- GOOGLE ANALYTICS PLACEHOLDER START -->
-<script>
-  // Google Analytics code goes here
-</script>
+<!-- Replace this comment with your Google Analytics code -->
 <!-- GOOGLE ANALYTICS PLACEHOLDER END -->
   <title>Is My VPN Working | Free IP & VPN Leak Test</title>
   <meta name="description" content="Check your IP address, VPN status, and location instantly. Free, private, and accurate VPN leak test tool.">
@@ -74,27 +72,32 @@
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Is My VPN Working</title>
   <!-- Leaflet CSS -->
   <link rel="preconnect" href="https://unpkg.com" crossorigin>
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <!-- Resource hints for external APIs -->
+  <link rel="dns-prefetch" href="https://api.ipify.org">
+  <link rel="dns-prefetch" href="https://ipapi.co">
+  <link rel="preconnect" href="https://api.ipify.org" crossorigin>
+  <link rel="preconnect" href="https://ipapi.co" crossorigin>
   <!-- Custom Styling -->
   <style>
   .ad-placeholder {
     display: block;
     margin: 1.5rem auto;
-    min-height: 48px; /* or the height you want for ad area */
-    background: transparent !important;
-    border: none !important;
+    /* Removed min-height to let ads determine size */
+    background: rgba(45, 55, 72, 0.3) !important; /* Dark theme compatible */
+    border: 1px solid rgba(96, 165, 250, 0.2) !important;
     box-shadow: none !important;
     color: transparent !important;
-    max-width: 100%;
-    border-radius: 0;
+    /* Removed width constraints to let responsive ads adapt */
+    border-radius: 8px;
     text-align: center;
     font-size: 1.15rem;
     font-weight: normal;
-    z-index: 1000;
+    z-index: 100; /* Lower than mobile menu */
     padding: 0;
+    position: relative;
   }
   .ad-top { background: #e3f2fd; border-color: #4285f4; color: #174ea6; }
   .ad-incontent {
@@ -361,11 +364,12 @@
         font-size: 1.5rem;
         font-weight: 600;
         color: #ffffff;
-        padding: 1rem 2rem;
+        padding: 1.2rem 2.5rem; /* Increased for better touch targets */
         border-radius: 0.5rem;
         transition: all 0.3s ease;
         text-align: center;
-        min-width: 200px;
+        min-width: 220px; /* Larger touch area */
+        min-height: 48px; /* Minimum touch target size */
       }
       
       .nav a:hover {
@@ -539,17 +543,18 @@
       position: fixed;
       top: 50%;
       transform: translateY(-50%);
-      width: 120px;
-      min-height: 600px;
-      background: transparent !important;
-      border: none !important;
+      /* Removed fixed width to let responsive ads adapt */
+      max-width: 160px; /* Maximum constraint for side positioning */
+      /* Removed min-height to let ads determine size */
+      background: rgba(45, 55, 72, 0.3) !important; /* Same as other ads */
+      border: 1px solid rgba(96, 165, 250, 0.2) !important;
       box-shadow: none !important;
       color: transparent !important;
-      z-index: 1001;
+      z-index: 100; /* Lower than mobile menu */
       display: block;
       padding: 0;
       margin: 0 0.5rem;
-      pointer-events: none; /* so they don't block other UI */
+      border-radius: 8px;
     }
     .ad-left {
       left: 0.5rem;
@@ -557,7 +562,7 @@
     .ad-right {
       right: 0.5rem;
     }
-    @media (max-width: 1100px) {
+    @media (max-width: 1200px) {
       .ad-side { display: none !important; }
     }
   </style>
@@ -578,9 +583,9 @@
       <a href="terms.html">Terms of Service</a>
     </nav>
   </header>
+  <main>
 <!-- GOOGLE ADSENSE PLACEHOLDER: TOP BANNER -->
 <div class="ad-placeholder ad-top" aria-hidden="true"></div>
-  <main>
     <h2 style="text-align: center;">Check your IP Address Location</h2>
     <!-- My IP Section -->
     <section>
@@ -597,7 +602,7 @@
         
       </div>
       <div class="panel">
-        <div id="map" aria-label="IP Location Map"></div>
+        <div id="map" role="img" aria-label="Interactive map showing your IP location" tabindex="0"></div>
       </div>
 
     </section>
@@ -616,7 +621,7 @@
         </div>
       </div>
       <div class="panel">
-        <div id="lookup-map" aria-label="IP Lookup Map"></div>
+        <div id="lookup-map" role="img" aria-label="Interactive map showing looked up IP location" tabindex="0"></div>
       </div>
     </section>
     <!-- FAQ Section -->
@@ -677,7 +682,9 @@
     function showMap(lat, lon) {
       if (!map) {
         map = L.map('map').setView([lat, lon], 10);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
       } else {
         map.setView([lat, lon], 10);
       }
@@ -686,7 +693,9 @@
     function showLookupMap(lat, lon) {
       if (!lookupMap) {
         lookupMap = L.map('lookup-map').setView([lat, lon], 10);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(lookupMap);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '© OpenStreetMap contributors'
+        }).addTo(lookupMap);
       } else {
         lookupMap.setView([lat, lon], 10);
       }
@@ -696,39 +705,118 @@
       const ipEl = document.getElementById('ip');
       const locEl = document.getElementById('location');
       const ispEl = document.getElementById('isp');
-      ipEl.textContent = locEl.textContent = ispEl.textContent = '...';
+      ipEl.textContent = locEl.textContent = ispEl.textContent = 'Loading...';
+      
       try {
-        const ipRes = await fetch('https://api.ipify.org?format=json');
+        // Fetch IP with timeout
+        const ipController = new AbortController();
+        const ipTimeout = setTimeout(() => ipController.abort(), 10000);
+        
+        const ipRes = await fetch('https://api.ipify.org?format=json', {
+          signal: ipController.signal
+        });
+        clearTimeout(ipTimeout);
+        
+        if (!ipRes.ok) throw new Error('IP service unavailable');
         const { ip } = await ipRes.json();
         ipEl.textContent = ip;
-        const geoRes = await fetch(`https://ipapi.co/${ip}/json/`);
+        
+        // Fetch geolocation with timeout
+        const geoController = new AbortController();
+        const geoTimeout = setTimeout(() => geoController.abort(), 10000);
+        
+        const geoRes = await fetch(`https://ipapi.co/${ip}/json/`, {
+          signal: geoController.signal
+        });
+        clearTimeout(geoTimeout);
+        
+        if (!geoRes.ok) throw new Error('Location service unavailable');
         const geo = await geoRes.json();
-        locEl.textContent = `${geo.city}, ${geo.country_name}`;
-        ispEl.textContent = geo.org || 'Unknown';
-        if (geo.latitude && geo.longitude) showMap(geo.latitude, geo.longitude);
-      } catch {
-        ipEl.textContent = 'Error';
-        locEl.textContent = 'Could not load location';
-        ispEl.textContent = 'Unknown';
+        
+        if (geo.error) {
+          throw new Error(geo.reason || 'Invalid IP address');
+        }
+        
+        locEl.textContent = `${geo.city || 'Unknown'}, ${geo.country_name || 'Unknown'}`;
+        ispEl.textContent = geo.org || 'Unknown ISP';
+        
+        if (geo.latitude && geo.longitude) {
+          showMap(geo.latitude, geo.longitude);
+        }
+        
+      } catch (error) {
+        console.error('IP check failed:', error);
+        if (error.name === 'AbortError') {
+          ipEl.textContent = 'Request timeout';
+          locEl.textContent = 'Please try again';
+          ispEl.textContent = 'Timeout';
+        } else {
+          ipEl.textContent = 'Service unavailable';
+          locEl.textContent = 'Please check connection';
+          ispEl.textContent = 'Error';
+        }
       }
     }
     async function lookupIP() {
-      const ip = document.getElementById('lookup-input').value;
+      const ip = document.getElementById('lookup-input').value.trim();
       const ipEl = document.getElementById('lookup-ip');
       const locEl = document.getElementById('lookup-location');
       const ispEl = document.getElementById('lookup-isp');
-      ipEl.textContent = locEl.textContent = ispEl.textContent = '...';
+      
+      // Input validation
+      if (!ip) {
+        ipEl.textContent = 'Please enter an IP';
+        locEl.textContent = 'No input provided';
+        ispEl.textContent = 'Error';
+        return;
+      }
+      
+      // Basic IP format validation
+      const ipRegex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+      if (!ipRegex.test(ip)) {
+        ipEl.textContent = 'Invalid IP format';
+        locEl.textContent = 'Please check IP address';
+        ispEl.textContent = 'Invalid';
+        return;
+      }
+      
+      ipEl.textContent = locEl.textContent = ispEl.textContent = 'Loading...';
+      
       try {
-        const geoRes = await fetch(`https://ipapi.co/${ip}/json/`);
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 10000);
+        
+        const geoRes = await fetch(`https://ipapi.co/${ip}/json/`, {
+          signal: controller.signal
+        });
+        clearTimeout(timeout);
+        
+        if (!geoRes.ok) throw new Error('Lookup service unavailable');
         const geo = await geoRes.json();
+        
+        if (geo.error) {
+          throw new Error(geo.reason || 'Invalid IP address');
+        }
+        
         ipEl.textContent = geo.ip || ip;
-        locEl.textContent = `${geo.city}, ${geo.country_name}`;
-        ispEl.textContent = geo.org || 'Unknown';
-        if (geo.latitude && geo.longitude) showLookupMap(geo.latitude, geo.longitude);
-      } catch {
-        ipEl.textContent = 'Error';
-        locEl.textContent = 'Unknown';
-        ispEl.textContent = 'Unknown';
+        locEl.textContent = `${geo.city || 'Unknown'}, ${geo.country_name || 'Unknown'}`;
+        ispEl.textContent = geo.org || 'Unknown ISP';
+        
+        if (geo.latitude && geo.longitude) {
+          showLookupMap(geo.latitude, geo.longitude);
+        }
+        
+      } catch (error) {
+        console.error('IP lookup failed:', error);
+        if (error.name === 'AbortError') {
+          ipEl.textContent = 'Request timeout';
+          locEl.textContent = 'Please try again';
+          ispEl.textContent = 'Timeout';
+        } else {
+          ipEl.textContent = 'Lookup failed';
+          locEl.textContent = 'Service unavailable';
+          ispEl.textContent = 'Error';
+        }
       }
     }
   </script>

@@ -324,60 +324,7 @@
     <div class="footer-copy">&copy; 2025 ismyvpnworking.online. All rights reserved.</div>
   </footer>
 
-  <script>
-    const navToggle = document.querySelector('.nav-toggle');
-    const nav = document.querySelector('.nav');
-    const body = document.body;
-    
-    // Toggle mobile menu
-    navToggle.addEventListener('click', function() {
-      const isOpen = nav.classList.contains('open');
-      
-      if (isOpen) {
-        // Close menu
-        nav.classList.remove('open');
-        this.classList.remove('active');
-        body.style.overflow = '';
-        this.setAttribute('aria-expanded', 'false');
-      } else {
-        // Open menu
-        nav.classList.add('open');
-        this.classList.add('active');
-        body.style.overflow = 'hidden';
-        this.setAttribute('aria-expanded', 'true');
-      }
-    });
-    
-    // Close menu when clicking on links
-    document.querySelectorAll('.nav a').forEach(link => {
-      link.addEventListener('click', () => {
-        nav.classList.remove('open');
-        navToggle.classList.remove('active');
-        body.style.overflow = '';
-        navToggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-    
-    // Close menu when clicking outside (on overlay)
-    nav.addEventListener('click', (e) => {
-      if (e.target === nav) {
-        nav.classList.remove('open');
-        navToggle.classList.remove('active');
-        body.style.overflow = '';
-        navToggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-    
-    // Close menu on escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && nav.classList.contains('open')) {
-        nav.classList.remove('open');
-        navToggle.classList.remove('active');
-        body.style.overflow = '';
-        navToggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-  </script>
+
 
 </body>
 </html>
