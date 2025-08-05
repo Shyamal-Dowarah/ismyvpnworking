@@ -1,0 +1,87 @@
+# Performance Optimization for ismyvpnworking.online
+
+# Enable Gzip Compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE application/json
+</IfModule>
+
+# Browser Caching with Expires Headers
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # HTML files - 1 hour (for dynamic content updates)
+    ExpiresByType text/html "access plus 1 hour"
+    
+    # CSS and JavaScript - 1 month
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType application/x-javascript "access plus 1 month"
+    
+    # Images - 1 year
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/ico "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+    
+    # Fonts - 1 year
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType application/font-woff "access plus 1 year"
+    ExpiresByType application/font-woff2 "access plus 1 year"
+    
+    # XML and JSON - 1 hour
+    ExpiresByType application/xml "access plus 1 hour"
+    ExpiresByType application/json "access plus 1 hour"
+    ExpiresByType text/xml "access plus 1 hour"
+</IfModule>
+
+# Cache-Control Headers
+<IfModule mod_headers.c>
+    # HTML files
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "public, max-age=3600"
+    </FilesMatch>
+    
+    # CSS and JavaScript
+    <FilesMatch "\.(css|js)$">
+        Header set Cache-Control "public, max-age=2592000"
+    </FilesMatch>
+    
+    # Images
+    <FilesMatch "\.(png|jpg|jpeg|gif|ico|svg)$">
+        Header set Cache-Control "public, max-age=31536000"
+    </FilesMatch>
+    
+    # Fonts
+    <FilesMatch "\.(woff|woff2|ttf|eot)$">
+        Header set Cache-Control "public, max-age=31536000"
+    </FilesMatch>
+</IfModule>
+
+# Security Headers
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options nosniff
+    Header always set X-Frame-Options DENY
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Prevent access to sensitive files
+<Files ".htaccess">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Custom Error Pages
+ErrorDocument 404 /404.html
