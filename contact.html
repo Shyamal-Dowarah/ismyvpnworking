@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics/Tag Manager Placeholder -->
+  <script>
+    // Google Analytics code goes here
+  </script>
+  <title>Contact Us | Is My VPN Working</title>
+  <meta name="description" content="Contact Is My VPN Working for questions, suggestions, or support. We're here to help you with your VPN privacy needs.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.ismyvpnworking.online/contact.html">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!-- Open Graph Meta -->
+  <meta property="og:title" content="Contact Us | Is My VPN Working">
+  <meta property="og:description" content="Contact Is My VPN Working for questions, suggestions, or support. We're here to help you with your VPN privacy needs.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.ismyvpnworking.online/contact.html">
+  <meta property="og:image" content="https://www.ismyvpnworking.online/og-image.png">
+  <!-- Twitter Card Meta -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact Us | Is My VPN Working">
+  <meta name="twitter:description" content="Contact Is My VPN Working for questions, suggestions, or support. We're here to help you with your VPN privacy needs.">
+  <meta name="twitter:image" content="https://www.ismyvpnworking.online/og-image.png">
+  <!-- Schema.org Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Contact Us | Is My VPN Working",
+    "url": "https://www.ismyvpnworking.online/contact.html",
+    "description": "Contact Is My VPN Working for questions, suggestions, or support. We're here to help you with your VPN privacy needs.",
+    "inLanguage": "en",
+    "isPartOf": {
+      "@type": "WebSite",
+      "url": "https://www.ismyvpnworking.online/"
+    }
+  }
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <!-- Custom Styling -->
+  <style>
+    :root {
+      --bg-main: #1a202c;
+      --bg-panel: #2d3748;
+      --text-main: #ffffff;
+      --accent: #3b82f6;
+      --accent-hover: #2563eb;
+    }
+    body { background: var(--bg-main); color: var(--text-main); font-family: sans-serif; margin: 0; padding: 0; }
+    .panel {
+      background-color: var(--bg-panel);
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+    /* Modern Mobile Menu - Rebuilt from Scratch */
+    .header {
+      background: #1a202c;
+      padding: 1rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .logo {
+      color: #ffffff;
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    
+    .logo a {
+      color: inherit;
+      text-decoration: none;
+    }
+    
+    /* Desktop Navigation */
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    
+    .nav a {
+      color: #e2e8f0;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 0;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    
+    .nav a:hover {
+      color: #60a5fa;
+    }
+    
+    .nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #60a5fa;
+      transition: width 0.3s ease;
+    }
+    
+    .nav a:hover::after {
+      width: 100%;
+    }
+    
+    /* Mobile Menu Toggle */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      z-index: 1001;
+    }
+    
+    .hamburger,
+    .hamburger::before,
+    .hamburger::after {
+      width: 25px;
+      height: 3px;
+      background: #ffffff;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+    
+    .hamburger {
+      position: relative;
+    }
+    
+    .hamburger::before,
+    .hamburger::after {
+      content: '';
+      position: absolute;
+      left: 0;
+    }
+    
+    .hamburger::before {
+      top: -8px;
+    }
+    
+    .hamburger::after {
+      top: 8px;
+    }
+    
+    /* Active Hamburger Animation */
+    .nav-toggle.active .hamburger {
+      background: transparent;
+    }
+    
+    .nav-toggle.active .hamburger::before {
+      transform: rotate(45deg);
+      top: 0;
+    }
+    
+    .nav-toggle.active .hamburger::after {
+      transform: rotate(-45deg);
+      top: 0;
+    }
+    
+    /* Mobile Navigation */
+    @media (max-width: 768px) {
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(26, 32, 44, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 999;
+      }
+      
+      .nav.open {
+        transform: translateX(0);
+      }
+      
+      .nav a {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #ffffff;
+        padding: 1rem 2rem;
+        border-radius: 0.5rem;
+        transition: all 0.3s ease;
+        text-align: center;
+        min-width: 200px;
+      }
+      
+      .nav a:hover {
+        background: rgba(96, 165, 250, 0.1);
+        color: #60a5fa;
+        transform: translateY(-2px);
+      }
+      
+      .nav a::after {
+        display: none;
+      }
+      
+      .nav-toggle {
+        display: flex;
+      }
+    }
+    
+    /* Simplified Footer Design */
+    .footer {
+      background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+      padding: 2rem;
+      margin-top: 3rem;
+      border-top: 1px solid #2d3748;
+      text-align: center;
+    }
+    
+    .footer-nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .footer-nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-nav a:hover {
+      color: #60a5fa;
+    }
+    
+    .footer-copy {
+      color: #9ca3af;
+      font-size: 0.9rem;
+    }
+    
+    /* Footer Responsive Design */
+    @media (max-width: 768px) {
+      .footer {
+        padding: 1.5rem 1rem;
+      }
+      
+      .footer-nav {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+      }
+      
+      .footer-nav a {
+        padding: 0.75rem;
+      }
+    }
+    
+    .old-footer {
+      background: #181e29;
+      color: #b4c2d6;
+      text-align: center;
+      padding: 2rem 1rem 1rem 1rem;
+      margin-top: 2rem;
+      font-size: 1rem;
+    }
+    .footer-nav { margin-bottom: 0.5rem; }
+    .footer-nav a {
+      color: #60a5fa;
+      margin: 0 0.75rem;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .footer-nav a:hover, .footer-nav a:focus {
+      color: #fff;
+      text-decoration: underline;
+    }
+    .footer-copy { font-size: 0.95rem; color: #6b7c93; }
+    @media (max-width: 600px) {
+      .footer-nav a {
+        display: block;
+        margin: 0.5rem 0;
+      }
+    }
+    main.boxed-layout { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const navToggle = document.querySelector('.nav-toggle');
+      const nav = document.querySelector('.nav');
+      if (navToggle && nav) {
+        navToggle.addEventListener('click', function() {
+          nav.classList.toggle('open');
+          this.classList.toggle('active');
+          const isExpanded = this.getAttribute('aria-expanded') === 'true';
+          this.setAttribute('aria-expanded', !isExpanded);
+        });
+
+        document.querySelectorAll('.nav a').forEach(link => {
+          link.addEventListener('click', () => {
+            if (nav.classList.contains('open')) {
+              nav.classList.remove('open');
+              navToggle.classList.remove('active');
+              navToggle.setAttribute('aria-expanded', 'false');
+            }
+          });
+        });
+      }
+    });
+  </script>
+</head>
+<body>
+  <header class="header" role="banner">
+    <div class="logo"><a href="index.html" style="color:inherit;text-decoration:none;">Is My VPN Working</a></div>
+    <button class="nav-toggle" aria-label="Open navigation menu" aria-controls="main-nav" aria-expanded="false">
+      <span class="hamburger"></span>
+    </button>
+    <nav class="nav" id="main-nav" role="navigation" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="contact.html" aria-current="page">Contact Us</a>
+      <a href="terms.html">Terms of Service</a>
+    </nav>
+  </header>
+  <main class="boxed-layout">
+    <div class="panel">
+      <h1>Contact Us</h1>
+      <p>We value your feedback and are committed to providing you with the best possible experience. If you have any questions, comments, or suggestions, please don't hesitate to reach out to us.</p>
+      <ul>
+        <li>Email: <a href="mailto:contact@ismyvpnworking.online">contact@ismyvpnworking.online</a></li>
+      </ul>
+      <p>We will do our best to respond to your inquiry promptly.</p>
+    </div>
+  </main>
+  <footer class="footer" role="contentinfo">
+    <nav class="footer-nav" aria-label="Footer menu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="contact.html">Contact Us</a>
+    </nav>
+    <div class="footer-copy">&copy; 2025 ismyvpnworking.online. All rights reserved.</div>
+  </footer>
+</body>
+</html>

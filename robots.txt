@@ -1,0 +1,10 @@
+# robots.txt for ismyvpnworking.online
+# Allow all search engines full access
+User-agent: *
+Disallow:
+
+# If you ever add admin or private paths, list them here, e.g.:
+# Disallow: /admin/
+# Disallow: /private/
+
+Sitemap: https://www.ismyvpnworking.online/sitemap.xml
