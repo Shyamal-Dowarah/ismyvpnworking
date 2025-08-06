@@ -177,6 +177,29 @@
       border-radius: 0.5rem;
       overflow: hidden;
       background-color: #374151;
+      position: relative;
+    }
+    /* Prevent micro layout shifts */
+    .flex {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    input[type="text"] {
+      flex: 1;
+      padding: 0.6rem;
+      font-size: 1rem;
+      border: 1px solid #2d3748;
+      border-radius: 0.5rem;
+      background-color: #4a5568;
+      color: white;
+      outline: none;
+      min-height: 44px;
+    }
+    /* Stabilize text content */
+    #ip-info, #lookup-result {
+      min-height: 72px;
     }
     h2 {
       font-size: 1.3rem;
