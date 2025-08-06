@@ -78,9 +78,10 @@
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Leaflet CSS -->
+  <!-- Leaflet CSS - Async loading to prevent render-blocking -->
   <link rel="preconnect" href="https://unpkg.com" crossorigin>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="preload" href="https://unpkg.com/leaflet/dist/leaflet.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"></noscript>
   <!-- Resource hints for external APIs -->
   <link rel="dns-prefetch" href="https://api.ipify.org">
   <link rel="dns-prefetch" href="https://ipapi.co">
@@ -663,8 +664,8 @@
   <!-- GOOGLE ADSENSE PLACEHOLDER: BOTTOM BANNER -->
 <div class="ad-placeholder ad-bottom" aria-hidden="true"></div>
 </main>
-  <!-- Leaflet JS -->
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <!-- Leaflet JS - Deferred loading for better performance -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js" defer></script>
   <script>
     let map, lookupMap;
     function showMap(lat, lon) {
