@@ -79,18 +79,16 @@
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Leaflet CSS - Async loading to prevent render-blocking -->
+  <!-- Leaflet CSS - Synchronous loading to prevent FOUC -->
   <link rel="preconnect" href="https://unpkg.com" crossorigin>
-  <link rel="preload" href="https://unpkg.com/leaflet/dist/leaflet.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"></noscript>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
   <!-- Resource hints for external APIs -->
   <link rel="dns-prefetch" href="https://api.ipify.org">
   <link rel="dns-prefetch" href="https://ipapi.co">
   <link rel="preconnect" href="https://api.ipify.org" crossorigin>
   <link rel="preconnect" href="https://ipapi.co" crossorigin>
-  <!-- External Stylesheet for better performance and caching -->
-  <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="styles.css"></noscript>
+  <!-- External Stylesheet - Synchronous loading to prevent FOUC -->
+  <link rel="stylesheet" href="styles.css">
 
   <!-- PLACEHOLDER: Insert Google tracking code here if needed -->
   <!-- Analytics placeholder -->
