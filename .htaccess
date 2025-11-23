@@ -83,5 +83,12 @@
     Deny from all
 </Files>
 
+# Ensure ads.txt is accessible and served correctly
+<Files "ads.txt">
+    Order allow,deny
+    Allow from all
+    ForceType text/plain
+</Files>
+
 # Custom Error Pages
 ErrorDocument 404 /404.html
